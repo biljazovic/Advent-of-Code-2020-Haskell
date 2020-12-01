@@ -1,0 +1,69 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b9e78a8ab7291894fc0f1d391f6f2443065b95a2b5b35b507b7adfda7d5ce801
+
+name:           aoc2020
+version:        0.1.0.0
+homepage:       https://github.com/biljazovic/Advent-of-Code-2020-Haskell#readme
+bug-reports:    https://github.com/biljazovic/Advent-of-Code-2020-Haskell/issues
+author:         Bruno Iljazovic
+maintainer:     bruno.iljazovic@gmail.com
+copyright:      2020 Bruno Iljazovic
+license:        BSD3
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/biljazovic/Advent-of-Code-2020-Haskell
+
+library
+  exposed-modules:
+      Day01
+  other-modules:
+      Paths_aoc2020
+  hs-source-dirs:
+      src/
+  default-extensions: LambdaCase FlexibleContexts TemplateHaskell TupleSections ViewPatterns MultiWayIf
+  build-depends:
+      JuicyPixels
+    , array
+    , base >=4.7 && <5
+    , containers
+    , fgl
+    , gloss
+    , lens
+    , linear
+    , megaparsec
+    , mtl
+    , random
+    , split
+    , vector
+  default-language: Haskell2010
+
+executable aoc2020
+  main-is: Main.hs
+  other-modules:
+      Paths_aoc2020
+  hs-source-dirs:
+      ./
+  default-extensions: LambdaCase FlexibleContexts TemplateHaskell TupleSections ViewPatterns MultiWayIf
+  build-depends:
+      JuicyPixels
+    , aoc2020
+    , array
+    , base >=4.7 && <5
+    , containers
+    , fgl
+    , gloss
+    , lens
+    , linear
+    , megaparsec
+    , mtl
+    , random
+    , split
+    , vector
+  default-language: Haskell2010

@@ -1,0 +1,40 @@
+name:                aoc2020 
+version:             0.1.0.0
+github:              "biljazovic/Advent-of-Code-2020-Haskell"
+license:             BSD3
+author:              "Bruno Iljazovic"
+maintainer:          "bruno.iljazovic@gmail.com"
+copyright:           "2020 Bruno Iljazovic"
+
+dependencies:
+- base >= 4.7 && < 5
+- random
+- containers
+- split
+- megaparsec
+- lens
+- mtl
+- JuicyPixels
+- vector
+- linear
+- gloss
+- fgl
+- array
+
+library:
+  source-dirs: src/
+
+default-extensions:
+- LambdaCase
+- FlexibleContexts
+- TemplateHaskell
+- TupleSections
+- ViewPatterns
+- MultiWayIf
+
+executables:
+  aoc2020:
+    main: Main.hs
+    source-dirs: ./
+    dependencies:
+    - aoc2020
