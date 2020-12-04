@@ -1,30 +1,21 @@
 module Day03 (main03) where
 
 import Data.Array
+import Util
 
-type IT = Array (Int, Int) Char
+solve :: CharMatrix -> (Int, Int) -> Int
+solve mat (di, dj) = length . filter (== '#') . map (mat !) . takeWhile ((< n) . (^._x)) $ iterate f (V2 0 0) where
+    f (V2 i j) = V2 (i+di) ((j+dj) `mod` m)
+    (_, V2 ((+1) -> n) ((+1) -> m)) = bounds mat
 
-parse :: [String] -> IT
-parse strs =
-  let n = length strs
-      m = length $ head strs
-      lst = concat $ [[((i, j), ch) | (ch, j) <- zip str [0 ..]] | (str, i) <- zip strs [0 ..]]
-   in array ((0, 0), (n -1, m -1)) lst
-
-solve :: IT -> (Int, Int) -> Int
-solve mat (di, dj) = length . filter (== '#') . map (mat !) . takeWhile ((< n) . fst) $ iterate f (0, 0) where
-    f (i, j) = (i+di, (j+dj) `mod` m)
-    (_, (n', m')) = bounds mat
-    (n, m) = (n' + 1, m' + 1)
-
-solveA :: IT -> Int
+solveA :: CharMatrix -> Int
 solveA = flip solve (1, 3)
 
-solveB :: IT -> Int
+solveB :: CharMatrix -> Int
 solveB mat = product . map (solve mat) $ [(1,1), (1,3), (1,5), (1,7), (2,1)]
 
 main03 :: IO ()
 main03 = do
-    input <- parse . lines <$> readFile "res/input03"
+    input <- parseMatrix <$> readFile "res/input03"
     print $ solveA input
     print $ solveB input

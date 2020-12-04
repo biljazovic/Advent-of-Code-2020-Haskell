@@ -1,10 +1,6 @@
 module Day02 (main02) where
 
-import Text.Megaparsec ( parseMaybe, many, Parsec )
-import Text.Megaparsec.Char
-    ( string, char, lowerChar, newline, space )
-import qualified Text.Megaparsec.Char.Lexer as L
-import Data.Void ( Void )
+import Util
 import Data.Ix ( Ix(inRange) )
 
 type IT = [((Int, Int), Char, String)]
@@ -13,7 +9,7 @@ type Parser = Parsec Void String
 
 parser :: Parser IT
 parser = many $ do
-    bounds <- (,) <$> L.decimal <* char '-' <*> L.decimal
+    bounds <- (,) <$> decimal <* char '-' <*> decimal
     ch     <- space *> lowerChar
     str    <- string ": " *> many lowerChar
     many newline
