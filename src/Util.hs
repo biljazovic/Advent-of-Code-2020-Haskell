@@ -1,12 +1,13 @@
-module Util (module Linear.V2, module Control.Lens, module Text.Megaparsec, module Text.Megaparsec.Char, module Text.Megaparsec.Char.Lexer, module Data.Void, parseMatrix, CharMatrix, sepBy1_, slice) where
+module Util (module Linear.V2, module Control.Lens, module Text.Megaparsec, module Text.Megaparsec.Char, module Text.Megaparsec.Char.Lexer, module Data.Void, parseMatrix, CharMatrix, sepBy1_, module Data.List) where
 
 import Linear.V2
 import Data.Array
-import Control.Lens hiding (noneOf)
+import Control.Lens hiding (noneOf, uncons)
 import Text.Megaparsec
 import Text.Megaparsec.Char
 import Text.Megaparsec.Char.Lexer hiding (space)
 import Data.Void ( Void )
+import Data.List
 
 type CharMatrix = Array (V2 Int) Char
 
@@ -20,6 +21,3 @@ parseMatrix str =
 
 sepBy1_ :: MonadParsec e s m => m a -> m sep -> m [a]
 sepBy1_ p sep = (:) <$> try p <*> many (try (sep *> p))
-
-slice :: Int -> String -> (String, String)
-slice n s = (take n s, drop n s)

@@ -2,7 +2,6 @@ module Day04 (main04, validField) where
 
 import Util
 import Data.Maybe (isJust)
-import Data.List (lookup)
 import Control.Monad (guard, forM)
 import Data.Char
 import Data.Ix
@@ -31,10 +30,10 @@ validField field s = if | field == "byr" -> inBounds s 1920 2002
                         | field == "iyr" -> inBounds s 2010 2020
                         | field == "eyr" -> inBounds s 2020 2030
                         | field == "hgt" -> let n = length s
-                                                (num, unit) = slice (n-2) s
+                                                (num, unit) = splitAt (n-2) s
                                              in unit == "cm" && inBounds num 150 193 ||
                                                 unit == "in" && inBounds num 59 76
-                        | field == "hcl" -> let (ch, color) = slice 1 s
+                        | field == "hcl" -> let (ch, color) = splitAt 1 s
                                              in ch == "#" && length color == 6 &&
                                                 all (\c -> isDigit c || ('a', 'f') `inRange` c) color
                         | field == "ecl" -> s `elem` ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
