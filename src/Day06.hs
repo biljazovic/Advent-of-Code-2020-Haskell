@@ -12,9 +12,9 @@ solveA :: IT -> Int
 solveA = sum . map (length . Set.fromList . concat)
 
 solveB :: IT -> Int
-solveB = sum . map f where
-    f strs = length $ foldr1 Set.intersection $ map Set.fromList strs
+solveB = sum . map (length . foldr1 Set.intersection . map Set.fromList)
 
+-- $> main06
 main06 :: IO ()
 main06 = do
     input <- parseIT <$> readFile "res/input06"
