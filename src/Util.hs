@@ -1,4 +1,4 @@
-module Util (module Linear.V2, module Control.Lens, module Text.Megaparsec, module Text.Megaparsec.Char, module Text.Megaparsec.Char.Lexer, module Data.Void, parseMatrix, CharMatrix, sepBy1_, module Data.List) where
+module Util (module Linear.V2, module Control.Lens, module Text.Megaparsec, module Text.Megaparsec.Char, module Text.Megaparsec.Char.Lexer, module Data.Void, parseMatrix, CharMatrix, sepBy1_, module Data.List, module Data.List.Split) where
 
 import Linear.V2
 import Data.Array
@@ -8,6 +8,7 @@ import Text.Megaparsec.Char
 import Text.Megaparsec.Char.Lexer hiding (space)
 import Data.Void ( Void )
 import Data.List
+import Data.List.Split (splitOn)
 
 type CharMatrix = Array (V2 Int) Char
 

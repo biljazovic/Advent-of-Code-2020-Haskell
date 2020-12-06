@@ -3,7 +3,7 @@ module Day05 (main05) where
 type IT = [Int]
 
 parseIT :: String -> IT
-parseIT = map (((\(x, y) -> x * 8 + y) . decode) . splitAt 7) . lines where
+parseIT = map ((\(x, y) -> x * 8 + y) . decode . splitAt 7) . lines where
     decode (str1, str2) = (decodeBinary ('F', 'B') str1, decodeBinary ('L', 'R') str2)
     decodeBinary (ch0, ch1) = foldl (\b ch -> b * 2 + if ch == ch0 then 0 else 1) 0
 
