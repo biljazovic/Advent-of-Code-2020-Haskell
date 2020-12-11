@@ -1,20 +1,21 @@
 module Util
   ( module Linear.V2,
-    module Control.Lens,
     module Text.Megaparsec,
     module Text.Megaparsec.Char,
     module Text.Megaparsec.Char.Lexer,
     module Data.Void,
+    module Data.List,
+    module Data.List.Split,
+    module Data.Array,
     parseMatrix,
     CharMatrix,
     sepBy1_,
-    module Data.List,
-    module Data.List.Split,
     emptyLine,
     generateBlackAndWhiteImage,
     generateGraph,
     susedi,
-    genericBfs
+    genericBfs,
+    listToArray
   )
 where
 
@@ -102,3 +103,7 @@ generateGraph mapa = (mkGraph nodes edges, indexMap)
 
 emptyLine :: String -> Bool
 emptyLine = all isSpace
+
+listToArray :: [e] -> Array Int e
+listToArray lst = listArray (0, length lst - 1) lst
+

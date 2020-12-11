@@ -1,6 +1,6 @@
 module Day03 (main03) where
 
-import Data.Array
+import Control.Lens ((^.))
 import Util
 
 solve :: CharMatrix -> (Int, Int) -> Int

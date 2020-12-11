@@ -15,7 +15,9 @@ type IT = [(Bag, [(Int, Bag)])]
 parseLine :: String -> (Bag, [(Int, Bag)])
 parseLine line = (topbag, bags) where
     (topbag : bags' : _) = splitOn " bags contain " line
-    bags = if bags' == "no other bags." then [] else map f $ splitOn ", " bags'
+    bags = if bags' == "no other bags." 
+              then [] 
+              else map f $ splitOn ", " bags'
     f bag' = let amount : (unwords . init -> bag) = words bag'
               in (read amount, bag)
 
