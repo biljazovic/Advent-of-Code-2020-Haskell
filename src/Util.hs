@@ -15,7 +15,9 @@ module Util
     generateGraph,
     susedi,
     genericBfs,
-    listToArray
+    listToArray,
+    listCount,
+    toe
   )
 where
 
@@ -106,4 +108,10 @@ emptyLine = all isSpace
 
 listToArray :: [e] -> Array Int e
 listToArray lst = listArray (0, length lst - 1) lst
+
+listCount :: (a -> Bool) -> [a] -> Int
+listCount f = length . filter f
+
+toe :: [a] -> a
+toe lst = lst !! (length lst - 1)
 
