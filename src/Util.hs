@@ -13,11 +13,13 @@ module Util
     emptyLine,
     generateBlackAndWhiteImage,
     generateGraph,
-    susedi,
+    susedi4,
+    susedi8,
     genericBfs,
     listToArray,
     listCount,
-    toe
+    toe,
+    inBounds
   )
 where
 
@@ -45,7 +47,7 @@ type CharMatrix = Array (V2 Int) Char
 
 parseMatrix :: String -> CharMatrix
 parseMatrix str =
-  let strs = lines str
+  let strs = filter (not . emptyLine) $ lines str
       n = length strs
       m = length $ head strs
       lst = concat $ [[(V2 i j, ch) | (ch, j) <- zip str [0 ..]] | (str, i) <- zip strs [0 ..]]
@@ -86,8 +88,21 @@ generateBlackAndWhiteImage filename defaultValue mapa toColor = saveBmpImage fil
     [minX, maxX] = map ($ coordsx) [Set.findMin, Set.findMax]
     [minY, maxY] = map ($ coordsy) [Set.findMin, Set.findMax]
 
-susedi :: V2 Int -> [V2 Int]
-susedi coord = map (+ coord) [V2 0 1, V2 1 0, V2 (-1) 0, V2 0 (-1)]
+susedi :: [V2 Int] -> Maybe (V2 Int, V2 Int) -> V2 Int -> [V2 Int]
+susedi dirs limits x = filter f $ map (+ x) dirs 
+  where
+    f x = case limits of
+      Nothing -> True
+      Just bounds -> inBounds bounds x
+
+susedi4 :: Maybe (V2 Int, V2 Int) -> V2 Int -> [V2 Int]
+susedi4 = susedi [V2 0 1, V2 1 0, V2 (-1) 0, V2 0 (-1)]
+
+susedi8 :: Maybe (V2 Int, V2 Int) -> V2 Int -> [V2 Int]
+susedi8 = susedi [V2 0 1, V2 1 0, V2 (-1) 0, V2 0 (-1), V2 1 1, V2 (-1) 1, V2 1 (-1), V2 (-1) (-1)]
+
+inBounds :: (V2 Int, V2 Int) -> V2 Int -> Bool
+inBounds (V2 i0 j0, V2 i1 j1) (V2 i j) = (i0, i1) `inRange` i && (j0, j1) `inRange` j
 
 generateGraph :: Map (V2 Int) Int -> (Gr Int Int, Map (V2 Int) Int)
 generateGraph mapa = (mkGraph nodes edges, indexMap)
@@ -96,7 +111,7 @@ generateGraph mapa = (mkGraph nodes edges, indexMap)
     indexMap = Map.fromList $ zip coords [1 ..]
     nodes = zipWith (\coord index -> (index, mapa Map.! coord)) coords [1 ..]
     edges = concatMap f coords
-    f coord = mapMaybe g (susedi coord)
+    f coord = mapMaybe g (susedi4 Nothing coord)
       where
         g sused = do
           tip <- Map.lookup sused mapa
