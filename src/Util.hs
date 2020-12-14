@@ -1,8 +1,5 @@
 module Util
   ( module Linear.V2,
-    module Text.Megaparsec,
-    module Text.Megaparsec.Char,
-    module Text.Megaparsec.Char.Lexer,
     module Data.Void,
     module Data.List,
     module Data.List.Split,
@@ -19,7 +16,8 @@ module Util
     listToArray,
     listCount,
     toe,
-    inBounds
+    inBounds,
+    scale
   )
 where
 
@@ -39,9 +37,7 @@ import qualified Data.Sequence as Seq
 import qualified Data.Set as Set
 import Data.Void (Void)
 import Linear.V2
-import Text.Megaparsec
-import Text.Megaparsec.Char
-import Text.Megaparsec.Char.Lexer hiding (space)
+import Text.Megaparsec (MonadParsec, try, many)
 
 type CharMatrix = Array (V2 Int) Char
 
@@ -130,3 +126,5 @@ listCount f = length . filter f
 toe :: [a] -> a
 toe lst = lst !! (length lst - 1)
 
+scale :: (Integral a, Integral b) => a -> V2 b -> V2 b
+scale s (V2 x y) = V2 (fromIntegral s * x) (fromIntegral s * y)

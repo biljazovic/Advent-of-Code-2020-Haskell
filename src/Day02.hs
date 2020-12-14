@@ -1,7 +1,9 @@
 module Day02 (main02) where
 
 import Util
-import Data.Ix ( Ix(inRange) )
+import Text.Megaparsec
+import Text.Megaparsec.Char
+import Text.Megaparsec.Char.Lexer hiding (space)
 
 type IT = [((Int, Int), Char, String)]
 

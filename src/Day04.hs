@@ -4,7 +4,8 @@ import Util
 import Data.Maybe (isJust)
 import Control.Monad (guard, forM)
 import Data.Char
-import Data.Ix
+import Text.Megaparsec
+import Text.Megaparsec.Char
 
 type IT = [[(String, String)]]
 
