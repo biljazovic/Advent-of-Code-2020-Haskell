@@ -17,7 +17,9 @@ module Util
     listCount,
     toe,
     inBounds,
-    scale
+    scale,
+    argmin,
+    argmax
   )
 where
 
@@ -32,7 +34,7 @@ import Data.List
 import Data.List.Split (splitOn)
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Maybe (mapMaybe)
+import Data.Maybe (mapMaybe, fromJust)
 import qualified Data.Sequence as Seq
 import qualified Data.Set as Set
 import Data.Void (Void)
@@ -128,3 +130,9 @@ toe lst = lst !! (length lst - 1)
 
 scale :: (Integral a, Integral b) => a -> V2 b -> V2 b
 scale s (V2 x y) = V2 (fromIntegral s * x) (fromIntegral s * y)
+
+argmin :: Ord a => [a] -> Int
+argmin xs = fromJust $ elemIndex (minimum xs) xs
+
+argmax :: Ord a => [a] -> Int
+argmax xs = fromJust $ elemIndex (maximum xs) xs
