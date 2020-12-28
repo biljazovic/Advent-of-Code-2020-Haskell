@@ -20,6 +20,8 @@ dependencies:
 - gloss
 - fgl
 - array
+- scanf
+- digits
 
 library:
   source-dirs: src/

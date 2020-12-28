@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0248516d6e1345e1737d72645fe7b70414695caf6df572d4226fd10b018aab00
+-- hash: c943883289e62f991d6559c39c3334d3a81687002de0d2f3dc9ff485aaad8a77
 
 name:           aoc2020
 version:        0.1.0.0
@@ -35,6 +35,7 @@ library
       Day11
       Day12
       Day13
+      Day14
       Util
   other-modules:
       Paths_aoc2020
@@ -46,6 +47,7 @@ library
     , array
     , base >=4.7 && <5
     , containers
+    , digits
     , fgl
     , gloss
     , lens
@@ -53,6 +55,7 @@ library
     , megaparsec
     , mtl
     , random
+    , scanf
     , split
     , vector
   default-language: Haskell2010
@@ -70,6 +73,7 @@ executable aoc2020
     , array
     , base >=4.7 && <5
     , containers
+    , digits
     , fgl
     , gloss
     , lens
@@ -77,6 +81,7 @@ executable aoc2020
     , megaparsec
     , mtl
     , random
+    , scanf
     , split
     , vector
   default-language: Haskell2010
