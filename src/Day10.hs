@@ -11,7 +11,7 @@ solveA lst = listCount (== 1) diffs * listCount (== 3) diffs
     diffs = zipWith (-) (tail lst) lst
 
 solveB :: IT -> Int
-solveB lst = foldl' f (Map.singleton (head lst) 1) (tail lst) Map.! toe lst
+solveB lst = foldl' f (Map.singleton (head lst) 1) (tail lst) Map.! last lst
   where
     f mapa x = let v = sum $ map (\d -> Map.findWithDefault 0 (x-d) mapa) [1..3]
                 in Map.insert x v mapa

@@ -15,7 +15,6 @@ module Util
     genericBfs,
     listToArray,
     listCount,
-    toe,
     inBounds,
     scale,
     argmin,
@@ -124,9 +123,6 @@ listToArray lst = listArray (0, length lst - 1) lst
 
 listCount :: (a -> Bool) -> [a] -> Int
 listCount f = length . filter f
-
-toe :: [a] -> a
-toe lst = lst !! (length lst - 1)
 
 scale :: (Integral a, Integral b) => a -> V2 b -> V2 b
 scale s (V2 x y) = V2 (fromIntegral s * x) (fromIntegral s * y)
