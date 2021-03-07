@@ -2,6 +2,7 @@ module Day03 (main03) where
 
 import Control.Lens ((^.))
 import Util
+import Data.Array
 
 solve :: CharMatrix -> (Int, Int) -> Int
 solve mat (di, dj) = length . filter (== '#') . map (mat !) . takeWhile ((< n) . (^._x)) $ iterate f (V2 0 0) where

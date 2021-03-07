@@ -6,6 +6,7 @@ import Control.Monad (guard, forM)
 import Data.Char
 import Text.Megaparsec
 import Text.Megaparsec.Char
+import Data.Ix (inRange)
 
 type IT = [[(String, String)]]
 

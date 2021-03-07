@@ -22,6 +22,9 @@ dependencies:
 - array
 - scanf
 - digits
+- monad-loops
+- transformers
+- arithmoi
 
 library:
   source-dirs: src/

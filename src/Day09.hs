@@ -1,6 +1,7 @@
 module Day09 (main09) where
 
 import Util
+import Data.Array
 
 type IT = Array Int Integer
 

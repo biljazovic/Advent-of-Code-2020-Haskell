@@ -1,6 +1,7 @@
 module Day11 (main11) where
 
 import Util
+import Data.Array
 
 simulate :: (CharMatrix -> CharMatrix) -> CharMatrix -> Int
 simulate f mat =

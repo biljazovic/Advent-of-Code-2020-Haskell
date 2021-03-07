@@ -3,7 +3,6 @@ module Util
     module Data.Void,
     module Data.List,
     module Data.List.Split,
-    module Data.Array,
     parseMatrix,
     CharMatrix,
     sepBy1_,

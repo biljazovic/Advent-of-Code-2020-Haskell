@@ -4,6 +4,7 @@ import Util
 import Text.Megaparsec
 import Text.Megaparsec.Char
 import Text.Megaparsec.Char.Lexer hiding (space)
+import Data.Ix (inRange)
 
 type IT = [((Int, Int), Char, String)]
 

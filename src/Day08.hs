@@ -3,6 +3,7 @@ module Day08 (main08) where
 import Data.Either (rights)
 import qualified Data.Set as Set
 import Util
+import Data.Array
 
 type IT = Array Int Ins
 
